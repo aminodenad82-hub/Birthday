@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Birthday cake</title>
+<style>
+
+h1{
+    color: rgba(255, 255, 0, 0.247);
+    margin-top: 200px;
+    margin-bottom:100px;
+    animation:  glow 0.6s infinite alternate;
+}
+h1 #age{
+animation: box 0.6s infinite alternate;
+}
+
+h1:hover{
+    
+animation:  glow 0.6s infinite alternate;
+}
+
+body {
+      text-align: center;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #222;
+}
+
+.penguin{
+  position: absolute;   /* allows free placement */
+  top: 50px; 
+  right: 40px;           /* distance from top edge */          /* distance from right edge */
+  width: 20vw;   /* scales with viewport width */
+max-width: 150px;
+         /* resize as needed */
+  height: 150px;
+}
+.penguin2{
+  position: absolute;   /* allows free placement */
+  top: 50px; 
+  left: 50%;               /* center horizontally */
+  transform: translateX(-50%);          /* distance from top edge */          /* distance from right edge */
+  width: 20vw;   /* scales with viewport width */
+max-width: 150px;
+        /* resize as needed */
+  height: 150px;
+}
+.penguin3{
+  position: absolute;   /* allows free placement */
+  top: 50px; 
+  left: 40px;           /* distance from top edge */          /* distance from right edge */
+  width: 20vw;   /* scales with viewport width */
+max-width: 150px;
+        /* resize as needed */
+  height: 150px;
+}
+
+
+
+
+.star {
+  position: absolute;
+  top: -20px;              /* start above the screen */
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: fall 1.5s linear infinite;
+}
+.star2{
+  position: absolute;
+  top: -20px;              /* start above the screen */
+  width: 7px;
+  height: 7px;
+  background: rgb(255, 230, 3);
+  border-radius: 50%;
+  animation: fall 1.5s linear infinite;
+}
+.star3{
+  position: absolute;
+  top: -20px;              /* start above the screen */
+  width: 7px;
+  height: 7px;
+  background: rgb(200, 3, 255);
+  border-radius: 50%;
+  animation: fall 1.5s linear infinite;
+}
+
+@keyframes fall {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(600px); opacity: 0; }
+}
+
+
+@keyframes glow {
+    0%{
+        color: #ebeb32f9;
+        text-shadow: 2px 2px 5px  #f1f1f1f9;
+    }
+    50%{
+        color: rgb(97, 97, 92);
+        text-shadow: 2px 2px 5px none;
+    }
+    100%{
+        color: #fffffaf9;
+        text-shadow: 2px 2px 5px  #ebeb32f9;
+    }
+}
+
+    
+
+
+
+body {
+      text-align: center;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #222;
+}
+
+.blank{
+    background-color: #222;
+}
+
+.bread{
+    height: 20px;
+    width:  210px;
+    margin: 0 auto;
+    border-radius: 7px;
+    background-color: rgb(147, 105, 50);
+}
+.layer2{
+    
+    height: 30px;
+    width: 200px;
+    margin: 0 auto;
+    background-color: rgb(75, 58, 35);
+   
+}
+.plate{
+    height: 10px;
+    width: 230px;
+    margin: 0 auto;
+    background-color: rgb(129, 178, 220);
+}
+.candle{
+    margin:0 auto;
+    justify-content: center;
+    height: 50px;
+    width: 20px;
+    background-color: rgb(158, 8, 8);
+}
+
+
+
+
+
+
+.flame {
+      margin: 0 auto;
+      position: relative;
+      width: 20px;
+      height: 30px;
+      background: radial-gradient(circle at 50% 30%, yellow, orange 70%, red 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* oval taper */
+      animation: flicker 0.6s infinite alternate;
+      box-shadow: 0 0 20px gold;
+    }
+    @keyframes flicker {
+      0%   { transform: scaleY(1) scaleX(1); opacity: 1; }
+      50%  { transform: scaleY(1.2) scaleX(0.9); opacity: 0.8; }
+      100% { transform: scaleY(1) scaleX(1.1); opacity: 1; }
+    }
+    /* Phones */
+@media (max-width: 600px) {
+  h1 {
+    margin-top: 100px;
+    font-size: 1.5rem;
+  }
+  .penguin, .penguin2, .penguin3 {
+    width: 80px;
+    height: 80px;
+    top: auto;
+    bottom: 10px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .penguin, .penguin2, .penguin3 {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+</style>
+
+</head>
+<body>
+<div class="blank">invisible</div>
+ <img 
+    src="https://media4.giphy.com/media/IkBkZ9pPcbkNXgQV4s/giphy.gif" 
+    alt="Blue Penguin Happy Birthday" 
+    class="penguin">
+<img 
+    src="https://media1.giphy.com/media/YpdffG6XDooX5KVlbK/giphy.gif" 
+    alt="Blue Penguin Happy Birthday" 
+    class="penguin2">
+<img 
+    src="https://media1.giphy.com/media/YB2hAiRZAopPq5INux/giphy.gif" 
+    alt="Blue Penguin Celebration" 
+    class="penguin penguin3">
+
+
+<div class="star" style="left:20px; animation-delay:0s;"></div>
+  <div class="star2" style="left:100px; animation-delay:1s;"></div>
+  <div class="star3" style="left:200px; animation-delay:2s;"></div>
+  <div class="star" style="left:300px; animation-delay:1.5s;"></div>
+  <div class="star2" style="left:400px; animation-delay:1s;"></div>
+  <div class="star3" style="left:500px; animation-delay:1.8s;"></div>
+  <div class="star" style="left:600px; animation-delay:1.2s;"></div>
+  <div class="star2" style="left:700px; animation-delay:1.7s;"></div>
+  <div class="star" style="left:800px; animation-delay:1.4s;"></div>
+  <div class="star2" style="left:900px; animation-delay:1.9s;"></div>
+  <div class="star3" style="left:1000px; animation-delay:1.7s;"></div>
+  <div class="star" style="left:1100px; animation-delay:1.4s;"></div>
+  <div class="star2" style="left:1200px; animation-delay:1.9s;"></div>
+  <div class="star" style="left:20px; animation-delay:0s;"></div>
+  <div class="star2" style="left:100px; animation-delay:1s;"></div>
+  <div class="star3" style="left:200px; animation-delay:2s;"></div>
+  <div class="star" style="left:300px; animation-delay:1.5s;"></div>
+  <div class="star2" style="left:400px; animation-delay:1s;"></div>
+  <div class="star" style="left:500px; animation-delay:1.8s;"></div>
+  <div class="star3" style="left:600px; animation-delay:1.2s;"></div>
+  <div class="star2" style="left:700px; animation-delay:1.7s;"></div>
+  <div class="star" style="left:800px; animation-delay:1.4s;"></div>
+  <div class="star3" style="left:900px; animation-delay:1.9s;"></div>
+  <div class="star2" style="left:1000px; animation-delay:1.7s;"></div>
+  <div class="star" style="left:1100px; animation-delay:1.4s;"></div>
+  <div class="star3" style="left:1200px; animation-delay:1.9s;"></div>
+<h1>HAPPY <span id="age">22th</span> BIRTHDAY</h1>
+
+<div class="cake"></div>
+<div class="flame"></div>
+<div class="candle"></div>
+<div class="bread"></div>
+<div class="layer2"></div>
+<div class="bread"></div>
+<div class="layer2"></div>
+<div class="plate"></div>
+
+<!-- Hidden YouTube audio player -->
+<iframe width="0" height="0"
+        src="https://www.youtube.com/embed/uCcHxeED0ys?autoplay=1&loop=1&playlist=uCcHxeED0ys"
+        frameborder="0"
+        allow="autoplay">
+</iframe>
+
+ <audio autoplay loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+
+
+
+
+</body>
+</html>
