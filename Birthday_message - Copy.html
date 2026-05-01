@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yellie Yell Birthday Film</title>
+
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: black;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* OVERLAY */
+#overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,216,77,0.15), black);
+    pointer-events: none;
+}
+/* BIG YELLOW STARS */
+.big-star {
+    position: fixed;
+    top: -20px;
+    width: 12px;   /* bigger size */
+    height: 12px;
+    background: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 15px yellow; /* glowing effect */
+    animation: fall 8s linear forwards; /* slower fall */
+}
+
+/* START SCREEN */
+#start {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+    color: #ffd84d;
+}
+
+/* COUNTDOWN STYLE */
+#countdown {
+    font-size: 80px;
+    margin-top: 20px;
+    color: #ffd84d;
+    text-shadow: 0 0 30px #ffd84d;
+}
+
+/* SLIDES */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(1.2);
+    transition: all 2.5s ease; /* slower fade */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+.active {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1);
+}
+
+h1 {
+    color: #ffd84d;
+    font-size: 52px;
+    text-shadow: 0 0 30px #ffd84d;
+}
+
+p {
+    color: white;
+    font-size: 18px;
+    max-width: 650px;
+}
+
+/* FINAL */
+#final {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #111, black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: 2s;
+    text-align: center;
+}
+
+#final.show {
+    opacity: 1;
+}
+
+#final h1 {
+    color: #ffd84d;
+    font-size: 60px;
+    text-shadow: 0 0 40px #ffd84d;
+}
+
+/* TULIPS */
+.tulip {
+    position: fixed;
+    top: -50px;
+    font-size: 24px;
+    animation: float 6s linear forwards;
+}
+
+@keyframes float {
+    from { transform: translateY(-10vh); opacity: 1; }
+    to   { transform: translateY(110vh); opacity: 0; }
+}
+
+/* STARS */
+.star {
+    position: fixed;
+    top: -10px;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    animation: fall 6s linear forwards;
+}
+
+@keyframes fall {
+    from { transform: translateY(-10vh); opacity: 1; }
+    to   { transform: translateY(110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="overlay"></div>
+
+<!-- OPENING COUNTDOWN -->
+<div id="start">
+    <h1>💛 HAPPY EID MILAD 🎂</h1>
+    <div id="countdown">5</div>
+</div>
+
+<!-- SLIDES -->
+<div class="slide active">
+    <h1>Happy Birthday 🎂</h1>
+    <p>To someone who means a lot...</p>
+</div>
+
+<div class="slide">
+    <h1>Yellie Yell 💛</h1>
+    <p>A soul full of kindness, warmth, and light 🌷</p>
+</div>
+
+<div class="slide">
+    <h1>Nursing Student 👩‍⚕️</h1>
+    <p>You are becoming someone who heals hearts and saves lives.</p>
+</div>
+
+<div class="slide">
+    <h1>Level 22 ✨</h1>
+    <p>Another year, another upgrade in your journey.</p>
+</div>
+
+<!-- FINAL -->
+<div id="final">
+    <h1>Happy Birthday Yellie Yell 💛</h1>
+    <p>May your life always bloom like tulips 🌷 and shine like gold ✨</p>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="https://www.soundjay.com/free-music/sounds/birthday.mp3">
+</audio>
+
+<script>
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+/* AUTO COUNTDOWN ON LOAD */
+window.onload = function () {
+    let count = 5;
+    const countdown = document.getElementById("countdown");
+
+    let timer = setInterval(() => {
+        count--;
+        countdown.innerText = count;
+
+        if (count === 0) {
+            clearInterval(timer);
+
+            document.getElementById("start").style.display = "none";
+
+            // Start everything
+            document.getElementById("music").play();
+            runSlides();
+            effects();
+        }
+    }, 1000);
+};
+
+/* SLIDES */
+function runSlides() {
+    let interval = setInterval(() => {
+        slides.forEach(s => s.classList.remove("active"));
+
+        if (index < slides.length) {
+            slides[index].classList.add("active");
+            index++;
+        } else {
+            clearInterval(interval);
+            showFinal();
+        }
+    }, 7000); // slower: 7 seconds per slide
+}
+
+/* FINAL */
+function showFinal() {
+    document.getElementById("final").classList.add("show");
+}
+
+/* TULIPS */
+function tulip() {
+    const t = document.createElement("div");
+    t.classList.add("tulip");
+    t.innerHTML = "🌷";
+    t.style.left = Math.random() * 100 + "vw";
+    t.style.fontSize = (18 + Math.random() * 20) + "px";
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 6000);
+}
+
+/* STARS */
+function star() {
+    const s = document.createElement("div");
+    s.classList.add("star");
+    s.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 6000);
+}
+
+/* Start tulip and star rain */
+function effects() {
+    setInterval(tulip, 800);     // every 0.8s a tulip falls
+    setInterval(star, 500);      // every 0.5s a star falls
+}
+/* BIG STAR */
+function bigStar() {
+    const bs = document.createElement("div");
+    bs.classList.add("big-star");
+    bs.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(bs);
+    setTimeout(() => bs.remove(), 8000);
+}
+function effects() {
+    setInterval(tulip, 800);      // tulips 🌷
+    setInterval(star, 400);       // small stars ✨
+    setInterval(bigStar, 2000);   // big glowing yellow stars 🌟
+}
+
+
+</script>
+
+</body>
+</html>
